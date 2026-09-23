@@ -1,6 +1,6 @@
 # Confirm Before Compaction Memory
 
-一个用于 Codex 的记忆压缩确认 Skill。
+一个兼容 Codex 和 Claude Code 的记忆压缩确认 Skill。
 
 它的目标很简单：在上下文即将被压缩时，先把可能被丢弃的内容列出来，让用户逐项选择“保留”或“移除”，避免重要目标、约束和决策被摘要过程悄悄丢掉。
 
@@ -12,7 +12,7 @@
 - 默认保留。用户没有明确选择移除的内容，不会被主动丢弃。
 - 用户回复“继续”等模糊指令时，按“全部保留”处理。
 
-## 使用方式
+## Codex 使用方式
 
 将本目录安装到 Codex 的 Skills 目录后，可以直接调用：
 
@@ -44,6 +44,34 @@ git clone https://github.com/susie-jpg/confirm-before-compaction-memory.git
 ```
 
 然后将仓库目录放入你的 Codex Skills 目录中。
+
+## Claude Code 使用方式
+
+Claude Code 的项目级 Skill 需要放在 `.claude/skills` 下。本仓库已经提供兼容目录：
+
+```text
+.claude/
+└── skills/
+    └── confirm-before-compaction-memory/
+        └── SKILL.md
+```
+
+在项目目录中执行：
+
+```bash
+git clone https://github.com/susie-jpg/confirm-before-compaction-memory.git
+mkdir -p .claude/skills/confirm-before-compaction-memory
+cp confirm-before-compaction-memory/.claude/skills/confirm-before-compaction-memory/SKILL.md \\
+  .claude/skills/confirm-before-compaction-memory/SKILL.md
+```
+
+然后在 Claude Code 中直接说明：
+
+```text
+上下文压缩前，请使用 confirm-before-compaction-memory，先逐项让我确认哪些记忆可以移除。
+```
+
+如果 Claude Code 已识别该 Skill，也可以通过技能选择入口调用它。
 
 ## 一个确认示例
 
