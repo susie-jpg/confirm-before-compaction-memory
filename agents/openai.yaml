@@ -1,0 +1,4 @@
+interface:
+  display_name: "Confirm Before Compaction"
+  short_description: "Review memory candidates before context compaction"
+  default_prompt: "Before compressing context, identify candidate memories for removal and ask me to confirm."
